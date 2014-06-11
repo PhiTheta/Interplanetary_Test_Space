@@ -57,6 +57,7 @@ default:			break;
 
 std::string SubSystem::report()
 {
+	writeAttributesToMap();
 	std::string s;
 	s.append("==== " + sName + " ====\n");
 	s.append("Status:\t");
@@ -86,14 +87,14 @@ default:				return "NOT DEFINED";
 
 void SubSystem::connectPortToInput(Port* port)
 {
-	inputStreams.push_back(port);
+	inputStreams.insert(std::pair<std::string,Port*>(port->getClassifier,port));
 	port->setAttached();
 
 }
 
 void SubSystem::connectPortToOutput(Port* port)
 {
-	outputStreams.push_back(port);
+	outputStreams.insert(std::pair<std::string,Port*>(port->getClassifier,port));
 	port->setAttached();
 }
 
@@ -108,5 +109,17 @@ void SubSystem::writeConnectedOutputs()
 }
 
 void SubSystem::initializeSystem()
+{
+}
+
+void SubSystem::initializeSystem()
+{
+}
+
+void SubSystem::calculateStep()
+{
+}
+
+void SubSystem::writeAttributesToMap()
 {
 }

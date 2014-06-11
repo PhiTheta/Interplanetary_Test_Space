@@ -27,11 +27,18 @@ enum STATUS{
 
 class SubSystem
 {
-private:
+protected:
 	//VESSEL3* v;
+
+
+	double simTime;
+
+
 	std::string sName;
-	std::vector<Port*> inputStreams;
-	std::vector<Port*> outputStreams;
+	//std::vector<Port*> inputStreams;
+	//std::vector<Port*> outputStreams;
+	std::map<std::string,Port*> inputStreams;
+	std::map<std::string,Port*> outputStreams;
 	//std::map<std::string,double> input;
 	//std::map<std::string,double> output;
 	//std::map<SubSystem*,std::vector<std::string>> inputSystems;
@@ -43,6 +50,7 @@ private:
 	//Da diese je nach Subsystem unterschiedlich sind werden sie in den
 	//abgeleiteten Klassen definiert.
 	virtual void initializeSystem();
+	virtual void writeAttributesToMap();
 public:
 	SubSystem(std::string);
 	~SubSystem(void);
@@ -56,7 +64,7 @@ public:
 	/*
 	In dieser Funktion werden auf Basis der Attribute und der 
 	*/
-	//virtual void calculateStep();
+	virtual void calculateStep();
 	/*
 	Wenn sich die Werte der inputs und outputs dieses Subsystems durch die Funktion
 	calculateStep() geändert haben,dann sollen die neuen Werte den angeschlossenen Subsystemen

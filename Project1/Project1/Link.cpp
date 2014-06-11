@@ -18,8 +18,8 @@ Link::~Link(void)
 void Link::transfer()
 {
 	double temp = p1.getValue();
-	p1.setValue(p2.getValue());
-	p2.setValue(temp);
+	p1.addValue(p2.getValue());
+	p2.addValue(temp);
 }
 
 Port* Link::getPort()

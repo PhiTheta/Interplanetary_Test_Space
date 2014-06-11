@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\AOCS">
+      <UniqueIdentifier>{75dc31ff-2e10-47ea-820c-6e3beec8e625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tanks">
+      <UniqueIdentifier>{a95355aa-55fe-4847-8580-047e6f3787c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tanks">
+      <UniqueIdentifier>{b49caac8-8e57-4316-a827-7ce2a0ba7ca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AOCS">
+      <UniqueIdentifier>{b60aabce-8bbe-4f53-b034-af1de50b2725}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PSS">
+      <UniqueIdentifier>{16582fe8-729c-4da0-bc7d-b4981a7df90a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PSS">
+      <UniqueIdentifier>{4a2d51ce-cab6-4af3-828c-95b1ab144ab1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Creator.cpp">
@@ -30,6 +48,24 @@
     <ClCompile Include="SubSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Thruster.cpp">
+      <Filter>Source Files\AOCS</Filter>
+    </ClCompile>
+    <ClCompile Include="HydrogenTank.cpp">
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
+    <ClCompile Include="OxygenTank.cpp">
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterTank.cpp">
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
+    <ClCompile Include="Battery.cpp">
+      <Filter>Source Files\PSS</Filter>
+    </ClCompile>
+    <ClCompile Include="ThermalFissionGenerator.cpp">
+      <Filter>Source Files\PSS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Link.h">
@@ -43,6 +79,24 @@
     </ClInclude>
     <ClInclude Include="SubSystem.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HydrogenTank.h">
+      <Filter>Header Files\Tanks</Filter>
+    </ClInclude>
+    <ClInclude Include="OxygenTank.h">
+      <Filter>Header Files\Tanks</Filter>
+    </ClInclude>
+    <ClInclude Include="Thruster.h">
+      <Filter>Header Files\AOCS</Filter>
+    </ClInclude>
+    <ClInclude Include="Battery.h">
+      <Filter>Header Files\PSS</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterTank.h">
+      <Filter>Header Files\Tanks</Filter>
+    </ClInclude>
+    <ClInclude Include="ThermalFissionGenerator.h">
+      <Filter>Header Files\PSS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
