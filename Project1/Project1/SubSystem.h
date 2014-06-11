@@ -76,3 +76,12 @@ public:
 	virtual void writeConnectedInputs();
 	virtual void writeConnectedOutputs();
 };
+
+
+/*Ein großes Problem ergibt sich, wenn man an ein Subsystem mehrere Ports
+hängen will, die aber den selben Key haben, wie z.B. "Power". In einer Map
+wird dieser Key dann ersetzt. Man könnte das System auf eine Multimap umstellen,
+das bedeutet aber dass man ein paar hübsche und vor allem schnelle Methoden braucht
+um allgemein auf den inhalt dieser Multimap zuzugreifen. Zudem muss beim zugriff
+eigentlich auch überprüft werden, ob das angeschlossene Subsystem ACTIVE ist oder nicht
+und somit ein Strom fließen kann.*/

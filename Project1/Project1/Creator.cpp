@@ -14,7 +14,6 @@ int main()
 
 
 
-
 	double a;
 	cin >> a;
 	return 0;

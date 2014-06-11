@@ -25,3 +25,5 @@ void Thruster::writeAttributesToMap()
 	attributes.insert(std::pair<std::string,double>("Thrust[N]",thrust));
 	attributes.insert(std::pair<std::string,double>("Isp[m/s]",isp));
 }
+
+
