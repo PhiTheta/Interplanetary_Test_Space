@@ -8,14 +8,13 @@ void WaterTank::initializeSystem()
 
 void WaterTank::calculateStep()
 {
-	double in = inputStreams.find("H2O")->second->getValue;
-	double out = outputStreams.find("H2O")->second->getValue;
+	double in = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(inputStreams,"H2O"));
+	double out = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(outputStreams,"H2O"));
 
 	if(status == ACTIVE)
 	{
 		amount = amount + in - out;
-		inputStreams.find("H2O")->second->setValue(0.0);
-		outputStreams.find("H2O")->second->setValue(0.0);
+		resetAllPortValues();
 	}
 
 	

@@ -1,3 +1,5 @@
+#ifndef __HYDROGEN_TANK_H_INCLUDED__
+#define __HYDROGEN_TANK_H_INCLUDED__
 #include "SubSystem.h"
 
 class HydrogenTank: public SubSystem
@@ -10,3 +12,4 @@ public:
 	void writeAttributesToMap();
 };
 
+#endif

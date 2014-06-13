@@ -8,14 +8,13 @@ void OxygenTank::initializeSystem()
 
 void OxygenTank::calculateStep()
 {
-	double in = inputStreams.find("O2")->second->getValue;
-	double out = outputStreams.find("O2")->second->getValue;
+	double in = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(inputStreams,"O2"));
+	double out = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(outputStreams,"O2"));
 
 	if(status == ACTIVE)
 	{
 		amount = amount + in - out;
-		inputStreams.find("O2")->second->setValue(0.0);
-		outputStreams.find("O2")->second->setValue(0.0);
+		resetAllPortValues();
 	}
 }
 

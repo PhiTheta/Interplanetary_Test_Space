@@ -1,3 +1,7 @@
+#ifndef __LOGGER_H_INCLUDED__
+#define __LOGGER_H_INCLUDED__
+
+
 /*
 Diese Klasse ermöglicht es einzelne Logdateien zu schreiben um das
 Bugfixing zu erleichtern. Zudem kann es auch als Schiffs-Logbuch
@@ -20,3 +24,4 @@ public:
 	void close();
 };
 
+#endif

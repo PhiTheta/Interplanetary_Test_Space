@@ -19,6 +19,8 @@ std::string SubSystem::getName()
 
 void SubSystem::activate()
 {
+	activateAllPorts();
+
 	switch (status){
 case ACTIVE:		status = ACTIVE;
 					break;
@@ -38,6 +40,8 @@ default:			break;
 
 void SubSystem::deactivate()
 {
+	deactivateAllPorts();
+
 	switch (status){
 case ACTIVE:		status = PASSIVE;
 					break;
@@ -87,29 +91,47 @@ default:				return "NOT DEFINED";
 
 void SubSystem::connectPortToInput(Port* port)
 {
-	inputStreams.insert(std::pair<std::string,Port*>(port->getClassifier,port));
+	inputStreams.insert(std::pair<std::string,Port*>(port->getClassifier(),port));
 	port->setAttached();
+	port->activate();
 
 }
 
 void SubSystem::connectPortToOutput(Port* port)
 {
-	outputStreams.insert(std::pair<std::string,Port*>(port->getClassifier,port));
+	outputStreams.insert(std::pair<std::string,Port*>(port->getClassifier(),port));
 	port->setAttached();
+	port->activate();
 }
 
-void SubSystem::writeConnectedInputs()
+void SubSystem::activateAllPorts()
 {
+	std::multimap<std::string,Port*>::iterator pos;
 
+	for(pos=inputStreams.begin();pos!=inputStreams.end();++pos)
+	{
+		pos->second->activate();
+	}
+
+	for(pos=outputStreams.begin();pos!=outputStreams.end();++pos)
+	{
+		pos->second->activate();
+	}
 }
 
-void SubSystem::writeConnectedOutputs()
+void SubSystem::deactivateAllPorts()
 {
+	std::multimap<std::string,Port*>::iterator pos;
 
-}
+	for(pos=inputStreams.begin();pos!=inputStreams.end();++pos)
+	{
+		pos->second->deactivate();
+	}
 
-void SubSystem::initializeSystem()
-{
+	for(pos=outputStreams.begin();pos!=outputStreams.end();++pos)
+	{
+		pos->second->deactivate();
+	}
 }
 
 void SubSystem::initializeSystem()
@@ -122,4 +144,84 @@ void SubSystem::calculateStep()
 
 void SubSystem::writeAttributesToMap()
 {
+}
+
+std::vector<Port*> SubSystem::collectAllActiveSubSystemsWithClassifier(std::multimap<std::string,Port*> map,std::string classifier)
+{
+	std::vector<Port*> ports;
+
+	std::multimap<std::string,Port*>::iterator pos;
+
+	for(pos=map.begin();pos!=map.end();++pos)
+	{
+		if(pos->first.compare(classifier) == 0)
+		{
+			if(pos->second->isActive())
+				ports.push_back(pos->second);
+		}
+
+	}
+
+	return ports;
+
+}
+
+double SubSystem::getPortValuesSum(std::vector<Port*> ports)
+{
+	std::vector<Port*>::iterator pos;
+	double sum = 0;
+
+	for(pos=ports.begin();pos!=ports.end();++pos)
+	{
+		sum = sum + (*pos)->getValue();
+	}
+	return sum;
+}
+
+void SubSystem::writePortValuesEqual(std::vector<Port*> ports,double sum)
+{
+	std::vector<Port*>::iterator pos;
+	int size = ports.size();
+
+	if(size != 0)
+	{
+		for(pos=ports.begin();pos!=ports.end();++pos)
+		{
+			(*pos)->setValue(sum/size);
+		}
+	}
+
+}
+
+
+void SubSystem::resetAllPortValues()
+{
+	std::multimap<std::string,Port*>::iterator pos;
+
+	for(pos=inputStreams.begin();pos!=inputStreams.end();++pos)
+	{
+		pos->second->setValue(0.0);
+	}
+
+	for(pos=outputStreams.begin();pos!=outputStreams.end();++pos)
+	{
+		pos->second->setValue(0.0);
+	}
+}
+
+void SubSystem::resetPortValuesWithClassifier(std::string classifier)
+{
+	std::multimap<std::string,Port*>::iterator pos;
+
+	for(pos=inputStreams.begin();pos!=inputStreams.end();++pos)
+	{
+		if(pos->first.compare(classifier) == 0)
+			pos->second->setValue(0.0);
+	}
+
+	for(pos=outputStreams.begin();pos!=outputStreams.end();++pos)
+	{
+		if(pos->first.compare(classifier) == 0)
+			pos->second->setValue(0.0);
+	}
 }

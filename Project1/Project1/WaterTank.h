@@ -1,3 +1,5 @@
+#ifndef __WATER_TANK_H_INCLUDED__
+#define __WATER_TANK_H_INCLUDED__
 #include "SubSystem.h"
 
 class WaterTank: public SubSystem
@@ -10,3 +12,4 @@ public:
 	void writeAttributesToMap();
 };
 
+#endif

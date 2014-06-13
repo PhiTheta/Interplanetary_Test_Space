@@ -16,8 +16,11 @@ void Thruster::calculateStep()
 		totalMass = 0.0;
 	//Stoechiometrische verteilung der Masse
 	//2 Teile Wasserstoff auf 8 Teile Sauerstoff
-	inputStreams.find("H2")->second->setValue(totalMass*2/10);
-	inputStreams.find("O2")->second->setValue(totalMass*8/10);
+	std::vector<Port*> hydrogenTanks = collectAllActiveSubSystemsWithClassifier(inputStreams,"H2");
+	std::vector<Port*> oxygenTanks = collectAllActiveSubSystemsWithClassifier(inputStreams,"O2");
+	
+	writePortValuesEqual(hydrogenTanks,totalMass*2/10);
+	writePortValuesEqual(oxygenTanks,totalMass*8/10);
 }
 
 void Thruster::writeAttributesToMap()

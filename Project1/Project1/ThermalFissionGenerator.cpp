@@ -9,7 +9,7 @@ void ThermalFissionGenerator::initializeSystem()
 
 void ThermalFissionGenerator::calculateStep()
 {
-	outputStreams.find("Energy[J]")->second->getValue;
+	outputStreams.find("Energy[J]")->second->getValue();
 
 	/*
 	Es wird angenommen, dass die Leistung des Generators alle angeschlossenen
@@ -20,17 +20,20 @@ void ThermalFissionGenerator::calculateStep()
 	{
 		double elEnergy;
 		double heatEnergy;
-		elEnergy = outputStreams.find("Energy[J]")->second->getValue;
+		elEnergy = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(outputStreams,"Energy[J]"));
+		heatEnergy = power * simTime - elEnergy;
 
-		Das muss ich noch machen!!!
 
-		inputStreams.find("Energy[J]")->second->setValue(0.0);
-		outputStreams.find("Energy[J]")->second->setValue(0.0);
+		//Hier sollte noch eine Funktion rein, die die Temperatur oder andere
+		//charakteristiken des Generators simuliert -> Siehe Systemsimulation Skript!
+
+		resetAllPortValues();
 	}
 	
 }
 
 void ThermalFissionGenerator::writeAttributesToMap()
 {
-	attributes.insert(std::pair<std::string,double>("Energy[J]",charge));
+	attributes.insert(std::pair<std::string,double>("Temp[K]",temp));
+	attributes.insert(std::pair<std::string,double>("Power[W]",temp));
 }

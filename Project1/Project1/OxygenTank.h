@@ -1,3 +1,5 @@
+#ifndef __OXYGEN_TANK_H_INCLUDED__
+#define __OXYGEN_TANK_H_INCLUDED__
 #include "SubSystem.h"
 
 class OxygenTank: public SubSystem
@@ -10,3 +12,4 @@ public:
 	void writeAttributesToMap();
 };
 
+#endif

@@ -8,14 +8,13 @@ void Battery::initializeSystem()
 
 void Battery::calculateStep()
 {
-	double in = inputStreams.find("Energy[J]")->second->getValue;
-	double out = outputStreams.find("Energy[J]")->second->getValue;
+	double in = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(inputStreams,"Energy[J]"));
+	double out = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(outputStreams,"Energy[J]"));
 
 	if(status == ACTIVE)
 	{
 		charge = charge + in - out;
-		inputStreams.find("Energy[J]")->second->setValue(0.0);
-		outputStreams.find("Energy[J]")->second->setValue(0.0);
+		resetAllPortValues();
 	}
 	
 }

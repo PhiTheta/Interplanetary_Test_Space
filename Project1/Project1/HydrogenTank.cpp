@@ -8,14 +8,13 @@ void HydrogenTank::initializeSystem()
 
 void HydrogenTank::calculateStep()
 {
-	double in = inputStreams.find("H2")->second->getValue;
-	double out = outputStreams.find("H2")->second->getValue;
+	double in = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(inputStreams,"H2"));
+	double out = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(outputStreams,"H2"));
 
 	if(status == ACTIVE)
 	{
 		amount = amount + in - out;
-		inputStreams.find("H2")->second->setValue(0.0);
-		outputStreams.find("H2")->second->setValue(0.0);
+		resetAllPortValues();
 	}
 	
 }

@@ -1,20 +1,21 @@
 #include <iostream>
 #include <string>
+#include <map>
+#include "SubSystemLib.h"
 
 using namespace std;
 
+
 int main()
 {
-	
+	//Subsysteme initialisieren
+		//Tanks
+		
+  
 
 
 
 
-
-
-
-
-	double a;
-	cin >> a;
+	system("pause");
 	return 0;
 }

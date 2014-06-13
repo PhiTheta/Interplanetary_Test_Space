@@ -1,3 +1,5 @@
+#ifndef __BATTERY_H_INCLUDED__
+#define __BATTERY_H_INCLUDED__
 #include "SubSystem.h"
 
 class Battery: public SubSystem
@@ -10,3 +12,4 @@ public:
 	void writeAttributesToMap();
 };
 
+#endif

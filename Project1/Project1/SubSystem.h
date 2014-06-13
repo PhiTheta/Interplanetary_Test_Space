@@ -1,3 +1,5 @@
+#ifndef __SUBSYSTEM_H_INCLUDED__
+#define __SUBSYSTEM_H_INCLUDED__
 /*
 Diese header Datei beschreibt den Prinzipiellen Aufbau eines Subsystems.
 In Anlehnung an das Beobachter-Muster können sich hier andere Subsysteme
@@ -37,8 +39,8 @@ protected:
 	std::string sName;
 	//std::vector<Port*> inputStreams;
 	//std::vector<Port*> outputStreams;
-	std::map<std::string,Port*> inputStreams;
-	std::map<std::string,Port*> outputStreams;
+	std::multimap<std::string,Port*> inputStreams;
+	std::multimap<std::string,Port*> outputStreams;
 	//std::map<std::string,double> input;
 	//std::map<std::string,double> output;
 	//std::map<SubSystem*,std::vector<std::string>> inputSystems;
@@ -51,6 +53,13 @@ protected:
 	//abgeleiteten Klassen definiert.
 	virtual void initializeSystem();
 	virtual void writeAttributesToMap();
+	void activateAllPorts();
+	void deactivateAllPorts();
+	std::vector<Port*> collectAllActiveSubSystemsWithClassifier(std::multimap<std::string,Port*>,std::string);
+	double getPortValuesSum(std::vector<Port*>);
+	void writePortValuesEqual(std::vector<Port*>,double);
+	void resetAllPortValues();
+	void resetPortValuesWithClassifier(std::string);
 public:
 	SubSystem(std::string);
 	~SubSystem(void);
@@ -73,8 +82,6 @@ public:
 	Somit kann ein Input beispielsweise einen Wert "aufgezwungen" bekommen, oder aber sich
 	einen Wert vom angeschlossenen Subsystem holen.
 	*/
-	virtual void writeConnectedInputs();
-	virtual void writeConnectedOutputs();
 };
 
 
@@ -85,3 +92,5 @@ das bedeutet aber dass man ein paar hübsche und vor allem schnelle Methoden brau
 um allgemein auf den inhalt dieser Multimap zuzugreifen. Zudem muss beim zugriff
 eigentlich auch überprüft werden, ob das angeschlossene Subsystem ACTIVE ist oder nicht
 und somit ein Strom fließen kann.*/
+
+#endif

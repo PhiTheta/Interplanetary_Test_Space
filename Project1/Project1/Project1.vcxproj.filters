@@ -31,6 +31,12 @@
     <Filter Include="Header Files\PSS">
       <UniqueIdentifier>{4a2d51ce-cab6-4af3-828c-95b1ab144ab1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TCS">
+      <UniqueIdentifier>{06a67cfe-8cf5-4118-9fc0-02bdf200d8ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TCS">
+      <UniqueIdentifier>{bab4a379-668e-4a96-999b-3fbb0d9dc7fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Creator.cpp">
@@ -66,6 +72,12 @@
     <ClCompile Include="ThermalFissionGenerator.cpp">
       <Filter>Source Files\PSS</Filter>
     </ClCompile>
+    <ClCompile Include="FuelCell.cpp">
+      <Filter>Source Files\PSS</Filter>
+    </ClCompile>
+    <ClCompile Include="Radiator.cpp">
+      <Filter>Source Files\TCS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Link.h">
@@ -97,6 +109,15 @@
     </ClInclude>
     <ClInclude Include="ThermalFissionGenerator.h">
       <Filter>Header Files\PSS</Filter>
+    </ClInclude>
+    <ClInclude Include="FuelCell.h">
+      <Filter>Header Files\PSS</Filter>
+    </ClInclude>
+    <ClInclude Include="Radiator.h">
+      <Filter>Header Files\TCS</Filter>
+    </ClInclude>
+    <ClInclude Include="SubSystemLib.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
