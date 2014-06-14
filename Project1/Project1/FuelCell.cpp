@@ -36,8 +36,8 @@ void FuelCell::calculateStep()
 		writePortValuesEqual(radiators,heat);
 
 
-		Hier weiter machen:
-		Die Masse des Wassertanks wird nicht richtig aktualisiert!
+		//Hier weiter machen:
+		//Die Masse des Wassertanks wird nicht richtig aktualisiert!
 	}
 }
 
