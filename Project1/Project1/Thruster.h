@@ -9,6 +9,7 @@ private:
 	double isp;
 	std::string group;
 public:
+	Thruster(std::string name):SubSystem(name){initializeSystem();};
 	void initializeSystem();
 	void calculateStep();
 	void writeAttributesToMap();

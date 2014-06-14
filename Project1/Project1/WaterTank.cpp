@@ -1,6 +1,5 @@
 #include "WaterTank.h"
 
-
 void WaterTank::initializeSystem()
 {
 	amount = 5000.0;
@@ -22,5 +21,5 @@ void WaterTank::calculateStep()
 
 void WaterTank::writeAttributesToMap()
 {
-	attributes.insert(std::pair<std::string,double>("Amount[kg]",amount));
+	attributes["Amount[kg]"] = amount;
 }

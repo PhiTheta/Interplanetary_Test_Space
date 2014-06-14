@@ -9,6 +9,7 @@ class Radiator: public SubSystem
 private:
 	double heat;
 public:
+	Radiator(std::string name):SubSystem(name){initializeSystem();};
 	void initializeSystem();
 	void calculateStep();
 	void writeAttributesToMap();

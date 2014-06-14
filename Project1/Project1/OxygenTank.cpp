@@ -20,5 +20,5 @@ void OxygenTank::calculateStep()
 
 void OxygenTank::writeAttributesToMap()
 {
-	attributes.insert(std::pair<std::string,double>("Amount[kg]",amount));
+	attributes["Amount[kg]"] = amount;
 }

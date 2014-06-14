@@ -7,6 +7,7 @@ class OxygenTank: public SubSystem
 private:
 	double amount;
 public:
+	OxygenTank(std::string name):SubSystem(name){initializeSystem();};
 	void initializeSystem();
 	void calculateStep();
 	void writeAttributesToMap();

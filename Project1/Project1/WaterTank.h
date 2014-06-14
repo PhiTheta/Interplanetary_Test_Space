@@ -4,9 +4,11 @@
 
 class WaterTank: public SubSystem
 {
+	
 private:
 	double amount;
 public:
+	WaterTank(std::string name):SubSystem(name){initializeSystem();};
 	void initializeSystem();
 	void calculateStep();
 	void writeAttributesToMap();

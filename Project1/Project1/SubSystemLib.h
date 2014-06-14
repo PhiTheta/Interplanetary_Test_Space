@@ -8,4 +8,5 @@
 #include "ThermalFissionGenerator.h"
 #include "Thruster.h"
 #include "WaterTank.h"
+#include "Link.h"
 #endif

@@ -34,6 +34,6 @@ void ThermalFissionGenerator::calculateStep()
 
 void ThermalFissionGenerator::writeAttributesToMap()
 {
-	attributes.insert(std::pair<std::string,double>("Temp[K]",temp));
-	attributes.insert(std::pair<std::string,double>("Power[W]",temp));
+	attributes["Temp[K]"] = temp;
+	attributes["Power[W]"] = power;
 }

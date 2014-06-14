@@ -21,5 +21,6 @@ void HydrogenTank::calculateStep()
 
 void HydrogenTank::writeAttributesToMap()
 {
-	attributes.insert(std::pair<std::string,double>("Amount[kg]",amount));
+	//attributes.insert(std::pair<std::string,double>("Amount[kg]",amount));
+	attributes["Amount[kg]"] = amount;
 }

@@ -3,8 +3,9 @@
 SubSystem::SubSystem(std::string name)
 {
 	//v=vessel;
+	simTime = 0.1;
 	sName=name;
-	initializeSystem();
+	status = ACTIVE;
 }
 
 SubSystem::~SubSystem(void)

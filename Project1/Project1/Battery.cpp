@@ -3,23 +3,31 @@
 
 void Battery::initializeSystem()
 {
-	charge = 5000.0;
+	charge = 0.0;
+	maxCharge = 5000.0;
 }
 
 void Battery::calculateStep()
 {
-	double in = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(inputStreams,"Energy[J]"));
-	double out = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(outputStreams,"Energy[J]"));
+	std::vector<Port*> input = collectAllActiveSubSystemsWithClassifier(inputStreams,"Energy[J]");
+	std::vector<Port*> output = collectAllActiveSubSystemsWithClassifier(outputStreams,"Energy[J]");
+	double in = getPortValuesSum(input);
+	double out = getPortValuesSum(output);
 
 	if(status == ACTIVE)
 	{
-		charge = charge + in - out;
-		resetAllPortValues();
+		if(charge<maxCharge)
+		{
+			writePortValuesEqual(input,1.0);
+			charge = charge + 1.0;
+		}
+
+		
 	}
 	
 }
 
 void Battery::writeAttributesToMap()
 {
-	attributes.insert(std::pair<std::string,double>("Energy[J]",charge));
+	attributes["Energy[J]"] = charge;
 }

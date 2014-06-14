@@ -19,7 +19,7 @@ void Radiator::calculateStep()
 
 void Radiator::writeAttributesToMap()
 {
-	attributes.insert(std::pair<std::string,double>("Heat[J]",heat));
+	attributes["Heat[J]"] = heat;
 }
 
 

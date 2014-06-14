@@ -14,7 +14,7 @@ void FuelCell::calculateStep()
 	{
 		std::vector<Port*> activeConsumers = collectAllActiveSubSystemsWithClassifier(outputStreams,"Energy[J]");
 		std::vector<Port*> waterTanksIn = collectAllActiveSubSystemsWithClassifier(inputStreams,"H2O");
-		std::vector<Port*> waterTanksOut = collectAllActiveSubSystemsWithClassifier(inputStreams,"H2O");
+		std::vector<Port*> waterTanksOut = collectAllActiveSubSystemsWithClassifier(outputStreams,"H2O");
 		std::vector<Port*> hydrogenTanksIn = collectAllActiveSubSystemsWithClassifier(inputStreams,"H2");
 		std::vector<Port*> oxygenTanksIn = collectAllActiveSubSystemsWithClassifier(inputStreams,"O2");
 		std::vector<Port*> radiators = collectAllActiveSubSystemsWithClassifier(outputStreams,"Heat[J]");
@@ -34,14 +34,18 @@ void FuelCell::calculateStep()
 		writePortValuesEqual(hydrogenTanksIn,totalMass*2/10);
 		writePortValuesEqual(oxygenTanksIn,totalMass*8/10);
 		writePortValuesEqual(radiators,heat);
+
+
+		Hier weiter machen:
+		Die Masse des Wassertanks wird nicht richtig aktualisiert!
 	}
 }
 
 void FuelCell::writeAttributesToMap()
 {
-	attributes.insert(std::pair<std::string,double>("Efficiency[-]",efficiency));
-	attributes.insert(std::pair<std::string,double>("Cooling Water [kg]",coolingWaterPerSecond));
-	attributes.insert(std::pair<std::string,double>("Power[W]",currentPower));
+	attributes["Efficiency[-]"] = efficiency;
+	attributes["Cooling Water [kg]"] = coolingWaterPerSecond;
+	attributes["Power[W]"]=currentPower;
 }
 
 

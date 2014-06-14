@@ -8,6 +8,7 @@ private:
 	double temp;
 	double power;
 public:
+	ThermalFissionGenerator(std::string name):SubSystem(name){initializeSystem();};
 	void initializeSystem();
 	void calculateStep();
 	void writeAttributesToMap();

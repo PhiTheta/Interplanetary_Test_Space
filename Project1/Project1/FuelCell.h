@@ -9,6 +9,7 @@ private:
 	double coolingWaterPerSecond;
 	double currentPower;
 public:
+	FuelCell(std::string name):SubSystem(name){initializeSystem();};
 	void initializeSystem();
 	void calculateStep();
 	void writeAttributesToMap();
