@@ -10,7 +10,7 @@ void FuelCell::initializeSystem()
 void FuelCell::calculateStep()
 {
 
-	if(status == ACTIVE)
+	if(operationMode == ACTIVE)
 	{
 		std::vector<Port*> activeConsumers = collectAllActiveSubSystemsWithClassifier(outputStreams,"Energy[J]");
 		std::vector<Port*> waterTanksIn = collectAllActiveSubSystemsWithClassifier(inputStreams,"H2O");

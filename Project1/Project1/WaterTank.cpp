@@ -10,7 +10,7 @@ void WaterTank::calculateStep()
 	double in = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(inputStreams,"H2O"));
 	double out = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(outputStreams,"H2O"));
 
-	if(status == ACTIVE)
+	if(operationMode == ACTIVE)
 	{
 		amount = amount + in - out;
 		resetAllPortValues();

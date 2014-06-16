@@ -23,7 +23,7 @@ Je nach dem welchen Zustand das System gerade hat, kann es sich anders verhalten
 Zudem kann damit überprüft werden, ob sich das System Fehlerhaft verhält, bzw
 eine Warnung ausgibt, z.B. bei einem geringen Füllstand des Wassertanks.
 */
-enum STATUS{
+enum OPERATION_MODE{
 	ACTIVE,PASSIVE,ACTIVE_WARNING,PASSIVE_WARNING,ACTIVE_ERROR,PASSIVE_ERROR
 };
 
@@ -46,7 +46,7 @@ protected:
 	//std::map<SubSystem*,std::vector<std::string>> inputSystems;
 	//std::map<SubSystem*,std::vector<std::string>> outputSystems;
 	std::map<std::string,double> attributes;
-	STATUS status;
+	OPERATION_MODE operationMode;
 
 	//Hier sollen die input-map und output-map erzeugt werden.
 	//Da diese je nach Subsystem unterschiedlich sind werden sie in den

@@ -14,7 +14,7 @@ void Battery::calculateStep()
 	double in = getPortValuesSum(input);
 	double out = getPortValuesSum(output);
 
-	if(status == ACTIVE)
+	if(operationMode == ACTIVE)
 	{
 		if(charge<maxCharge)
 		{

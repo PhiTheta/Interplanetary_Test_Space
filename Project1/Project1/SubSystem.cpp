@@ -5,7 +5,7 @@ SubSystem::SubSystem(std::string name)
 	//v=vessel;
 	simTime = 0.1;
 	sName=name;
-	status = ACTIVE;
+	operationMode = ACTIVE;
 }
 
 SubSystem::~SubSystem(void)
@@ -22,18 +22,18 @@ void SubSystem::activate()
 {
 	activateAllPorts();
 
-	switch (status){
-case ACTIVE:		status = ACTIVE;
+	switch (operationMode){
+case ACTIVE:		operationMode = ACTIVE;
 					break;
-case PASSIVE:		status = ACTIVE;
+case PASSIVE:		operationMode = ACTIVE;
 					break;
-case ACTIVE_WARNING:status = ACTIVE_WARNING;
+case ACTIVE_WARNING:operationMode = ACTIVE_WARNING;
 					break;
-case ACTIVE_ERROR:	status = ACTIVE_ERROR;
+case ACTIVE_ERROR:	operationMode = ACTIVE_ERROR;
 					break;
-case PASSIVE_WARNING:status = ACTIVE_WARNING;
+case PASSIVE_WARNING:operationMode = ACTIVE_WARNING;
 					break;
-case PASSIVE_ERROR:	status = ACTIVE_ERROR;
+case PASSIVE_ERROR:	operationMode = ACTIVE_ERROR;
 					break;
 default:			break;
 	}
@@ -43,18 +43,18 @@ void SubSystem::deactivate()
 {
 	deactivateAllPorts();
 
-	switch (status){
-case ACTIVE:		status = PASSIVE;
+	switch (operationMode){
+case ACTIVE:		operationMode = PASSIVE;
 					break;
-case PASSIVE:		status = PASSIVE;
+case PASSIVE:		operationMode = PASSIVE;
 					break;
-case ACTIVE_WARNING:status = PASSIVE_WARNING;
+case ACTIVE_WARNING:operationMode = PASSIVE_WARNING;
 					break;
-case ACTIVE_ERROR:	status = PASSIVE_ERROR;
+case ACTIVE_ERROR:	operationMode = PASSIVE_ERROR;
 					break;
-case PASSIVE_WARNING:status = PASSIVE_WARNING;
+case PASSIVE_WARNING:operationMode = PASSIVE_WARNING;
 					break;
-case PASSIVE_ERROR:	status = PASSIVE_ERROR;
+case PASSIVE_ERROR:	operationMode = PASSIVE_ERROR;
 					break;
 default:			break;
 	}
@@ -79,7 +79,7 @@ std::string SubSystem::report()
 
 std::string SubSystem::getStatusAsString()
 {
-	switch (status){
+	switch (operationMode){
 case ACTIVE:			return "ACTIVE";
 case PASSIVE:			return "PASSIVE";
 case ACTIVE_WARNING:	return "ACTIVE_WARNING";

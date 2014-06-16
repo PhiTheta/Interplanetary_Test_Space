@@ -10,7 +10,7 @@ void Thruster::initializeSystem()
 void Thruster::calculateStep()
 {
 	double totalMass;
-	if(status == ACTIVE)
+	if(operationMode == ACTIVE)
 		totalMass = thrust*simTime/isp;
 	else
 		totalMass = 0.0;

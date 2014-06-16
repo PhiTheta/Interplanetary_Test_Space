@@ -11,7 +11,7 @@ void HydrogenTank::calculateStep()
 	double in = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(inputStreams,"H2"));
 	double out = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(outputStreams,"H2"));
 
-	if(status == ACTIVE)
+	if(operationMode == ACTIVE)
 	{
 		amount = amount + in - out;
 		resetAllPortValues();

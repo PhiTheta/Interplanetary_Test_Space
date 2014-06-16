@@ -16,7 +16,7 @@ void ThermalFissionGenerator::calculateStep()
 	Verbraucher mit Elektrischer ENergie versorgt. Die restliche Energie wird
 	in Form von Wärme[J] an die Radiatoren abgegeben.
 	*/
-	if(status == ACTIVE)
+	if(operationMode == ACTIVE)
 	{
 		double elEnergy;
 		double heatEnergy;

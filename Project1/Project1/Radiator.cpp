@@ -10,7 +10,7 @@ void Radiator::calculateStep()
 	double in = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(inputStreams,"Heat[J]"));
 	double out = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(outputStreams,"Heat[J]"));
 
-	if(status == ACTIVE)
+	if(operationMode == ACTIVE)
 	{
 		heat = heat + in - out;
 		resetAllPortValues();

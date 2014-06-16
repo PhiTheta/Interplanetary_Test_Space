@@ -11,7 +11,7 @@ void OxygenTank::calculateStep()
 	double in = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(inputStreams,"O2"));
 	double out = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(outputStreams,"O2"));
 
-	if(status == ACTIVE)
+	if(operationMode == ACTIVE)
 	{
 		amount = amount + in - out;
 		resetAllPortValues();
