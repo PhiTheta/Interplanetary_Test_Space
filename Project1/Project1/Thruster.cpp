@@ -12,7 +12,7 @@ void Thruster::calculateStep()
 	double totalMass;
 	if(operationMode == ACTIVE)
 		totalMass = thrust*simTime/isp;
-	else
+	if(operationMode == PASSIVE)
 		totalMass = 0.0;
 	//Stoechiometrische verteilung der Masse
 	//2 Teile Wasserstoff auf 8 Teile Sauerstoff

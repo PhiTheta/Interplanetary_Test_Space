@@ -4,7 +4,7 @@
 void Battery::initializeSystem()
 {
 	charge = 0.0;
-	maxCharge = 5000.0;
+	maxCharge = 5001.0;
 }
 
 void Battery::calculateStep()
@@ -18,11 +18,18 @@ void Battery::calculateStep()
 	{
 		if(charge<maxCharge)
 		{
+			charge = charge + in;
 			writePortValuesEqual(input,1.0);
-			charge = charge + 1.0;
 		}
-
-		
+		if(charge>=maxCharge)
+		{
+			writePortValuesEqual(input,0.0);
+		}
+	}
+	if(operationMode == PASSIVE)
+	{
+		writePortValuesEqual(input,0.0);
+		writePortValuesEqual(output,0.0);
 	}
 	
 }

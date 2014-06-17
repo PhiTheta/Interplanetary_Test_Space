@@ -3,7 +3,7 @@
 SubSystem::SubSystem(std::string name)
 {
 	//v=vessel;
-	simTime = 0.1;
+	simTime = 0.00001;
 	sName=name;
 	operationMode = ACTIVE;
 }

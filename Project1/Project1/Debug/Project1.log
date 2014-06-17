@@ -1,9 +1,25 @@
-﻿Build started 14.06.2014 12:14:40.
-     1>Project "C:\InterplanetarySC\TestSpace\Interplanetary_Test_Space\Project1\Project1\Project1.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         Project1.vcxproj -> C:\InterplanetarySC\TestSpace\Interplanetary_Test_Space\Project1\Debug\Project1.exe
-     1>Done Building Project "C:\InterplanetarySC\TestSpace\Interplanetary_Test_Space\Project1\Project1\Project1.vcxproj" (Build target(s)).
+﻿Build started 17.06.2014 18:33:09.
+     1>Project "C:\InterplanetarySC\Interplanetary_Test_Space\Project1\Project1\Project1.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt FuelCell.cpp
+         FuelCell.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\InterplanetarySC\Interplanetary_Test_Space\Project1\Debug\Project1.exe" /INCREMENTAL:NO /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"C:\InterplanetarySC\Interplanetary_Test_Space\Project1\Debug\Project1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\InterplanetarySC\Interplanetary_Test_Space\Project1\Debug\Project1.lib" /MACHINE:X86 Debug\Battery.obj
+         Debug\Creator.obj
+         Debug\FuelCell.obj
+         Debug\HydrogenTank.obj
+         Debug\Link.obj
+         Debug\Logger.obj
+         Debug\OxygenTank.obj
+         Debug\Port.obj
+         Debug\Radiator.obj
+         Debug\SubSystem.obj
+         Debug\ThermalFissionGenerator.obj
+         Debug\Thruster.obj
+         Debug\WaterTank.obj
+         Project1.vcxproj -> C:\InterplanetarySC\Interplanetary_Test_Space\Project1\Debug\Project1.exe
+     1>Done Building Project "C:\InterplanetarySC\Interplanetary_Test_Space\Project1\Project1\Project1.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.05
+Time Elapsed 00:00:01.17

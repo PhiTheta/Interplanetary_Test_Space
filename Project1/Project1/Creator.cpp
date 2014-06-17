@@ -5,6 +5,8 @@
 
 using namespace std;
 
+void runSimulationSteps(vector<SubSystem*> subsys,vector<Link> links,int steps);
+
 
 int main()
 {
@@ -57,7 +59,7 @@ int main()
 	links.push_back(o2a);
 	links.push_back(o2b);
 	links.push_back(h2oa);
-	links.push_back(h2oa);
+	links.push_back(h2ob);
 	links.push_back(heat1);
 	links.push_back(power1);
 
@@ -79,6 +81,36 @@ int main()
 	rad1->connectPortToInput(heat1.getPort());
 	bat1->connectPortToInput(power1.getPort());
 
+	for(int i=0;i<100;i++)
+		runSimulationSteps(subsys,links,10);
+	fc1->deactivate();
+	for(int i=0;i<100;i++)
+		runSimulationSteps(subsys,links,100);
+	fc1->activate();
+	for(int i=0;i<100;i++)
+		runSimulationSteps(subsys,links,100);
+
+	/*for (ssit = subsys.begin();ssit!=subsys.end();++ssit)
+	{
+		cout << (*ssit)->report() <<"\n\n";
+	}
+
+	cout << string(30,'#') << "\n\n";
+
+	for (int i = 0; i < 1000; i++)
+	{
+		for (ssit = subsys.begin();ssit!=subsys.end();++ssit)
+		{
+			(*ssit)->calculateStep();
+		}
+
+		for (linkit = links.begin();linkit!=links.end();++linkit)
+		{
+			linkit->transfer();
+		}
+
+	}
+
 
 	for (ssit = subsys.begin();ssit!=subsys.end();++ssit)
 	{
@@ -104,29 +136,35 @@ int main()
 	for (ssit = subsys.begin();ssit!=subsys.end();++ssit)
 	{
 		cout << (*ssit)->report() <<"\n\n";
-	}
-
-	cout << string(30,'#') << "\n\n";
-
-	for (int i = 0; i < 1000; i++)
-	{
-		for (ssit = subsys.begin();ssit!=subsys.end();++ssit)
-		{
-			(*ssit)->calculateStep();
-		}
-
-		for (linkit = links.begin();linkit!=links.end();++linkit)
-		{
-			linkit->transfer();
-		}
-
-	}
-
-	for (ssit = subsys.begin();ssit!=subsys.end();++ssit)
-	{
-		cout << (*ssit)->report() <<"\n\n";
-	}
+	}*/
 
 	system("pause");
 	return 0;
+}
+
+void runSimulationSteps(vector<SubSystem*> subsys,vector<Link> links,int steps)
+{
+	vector<SubSystem*>::iterator ssit;
+	vector<Link>::iterator linkit;
+
+	for (int i = 0; i < steps; i++)
+	{
+		for (ssit = subsys.begin();ssit!=subsys.end();++ssit)
+		{
+			(*ssit)->calculateStep();
+		}
+
+		for (linkit = links.begin();linkit!=links.end();++linkit)
+		{
+			linkit->transfer();
+		}
+
+	}
+
+	system("cls");
+
+	for (ssit = subsys.begin();ssit!=subsys.end();++ssit)
+	{
+		cout << (*ssit)->report() <<"\n\n";
+	}
 }
