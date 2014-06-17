@@ -8,12 +8,17 @@ void OxygenTank::initializeSystem()
 
 void OxygenTank::calculateStep()
 {
-	double in = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(inputStreams,"O2"));
-	double out = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(outputStreams,"O2"));
+	std::vector<Port*> input = collectAllActiveSubSystemsWithClassifier(inputStreams,"O2");
+	std::vector<Port*> output = collectAllActiveSubSystemsWithClassifier(outputStreams,"O2");
+	double in = getPortValuesSum(input);
+	double out = getPortValuesSum(output);
 
 	if(operationMode == ACTIVE)
 	{
 		amount = amount + in - out;
+	}
+	if(operationMode == PASSIVE)
+	{
 		resetAllPortValues();
 	}
 }

@@ -82,13 +82,24 @@ int main()
 	bat1->connectPortToInput(power1.getPort());
 
 	for(int i=0;i<100;i++)
-		runSimulationSteps(subsys,links,10);
-	fc1->deactivate();
+		runSimulationSteps(subsys,links,30);
+	hydro1->deactivate();
+	//fc1->deactivate();
 	for(int i=0;i<100;i++)
-		runSimulationSteps(subsys,links,100);
-	fc1->activate();
+		runSimulationSteps(subsys,links,30);
+	//fc1->activate();
 	for(int i=0;i<100;i++)
-		runSimulationSteps(subsys,links,100);
+		runSimulationSteps(subsys,links,30);
+	//thrus1->deactivate();
+	for(int i=0;i<100;i++)
+		runSimulationSteps(subsys,links,30);
+	//thrus1->activate();
+	for(int i=0;i<100;i++)
+		runSimulationSteps(subsys,links,30);
+	for(int i=0;i<100;i++)
+		runSimulationSteps(subsys,links,30);
+	for(int i=0;i<100;i++)
+		runSimulationSteps(subsys,links,30);
 
 	/*for (ssit = subsys.begin();ssit!=subsys.end();++ssit)
 	{

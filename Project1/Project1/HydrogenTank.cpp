@@ -8,12 +8,17 @@ void HydrogenTank::initializeSystem()
 
 void HydrogenTank::calculateStep()
 {
-	double in = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(inputStreams,"H2"));
-	double out = getPortValuesSum(collectAllActiveSubSystemsWithClassifier(outputStreams,"H2"));
+	std::vector<Port*> input = collectAllActiveSubSystemsWithClassifier(inputStreams,"H2");
+	std::vector<Port*> output = collectAllActiveSubSystemsWithClassifier(outputStreams,"H2");
+	double in = getPortValuesSum(input);
+	double out = getPortValuesSum(output);
 
 	if(operationMode == ACTIVE)
 	{
 		amount = amount + in - out;
+	}
+	if(operationMode == PASSIVE)
+	{
 		resetAllPortValues();
 	}
 	
